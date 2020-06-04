@@ -67,6 +67,8 @@
     <Compile Include="Assets\FurnishedCabin\Scripts\MoveableObject.cs" />
     <Compile Include="Assets\Scripts\ControllerMovePlatforming.cs" />
     <Compile Include="Assets\Scripts\GravityDirChange.cs" />
+    <Compile Include="Assets\Scripts\Interact.cs" />
+    <Compile Include="Assets\Scripts\OpenCloseHiddenPassage.cs" />
     <Compile Include="Assets\Scripts\TeleArc.cs" />
     <Compile Include="Assets\gravityForMeshes.cs" />
     <None Include="Assets\HighQualityBricks&amp;Walls\Shaders\wood-877000.shader" />
