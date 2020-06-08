@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3890143306181754918}
   - component: {fileID: 1570022574385129447}
   - component: {fileID: 6583527686554373805}
-  - component: {fileID: 5506690783983490737}
+  - component: {fileID: 711979384408954624}
   m_Layer: 0
   m_Name: Bottle1
   m_TagString: Untagged
@@ -87,7 +87,7 @@ CapsuleCollider:
   m_Height: 0.5480779
   m_Direction: 1
   m_Center: {x: 0, y: 0.22596106, z: 0.0025832206}
---- !u!54 &5506690783983490737
+--- !u!54 &711979384408954624
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

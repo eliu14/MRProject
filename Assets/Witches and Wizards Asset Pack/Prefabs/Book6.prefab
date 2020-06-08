@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 8338597891237296405}
   - component: {fileID: 1441704734612926156}
   - component: {fileID: 6771888464258696105}
-  - component: {fileID: 4093488085584733378}
+  - component: {fileID: 9176398337524850818}
   m_Layer: 0
   m_Name: Book6
   m_TagString: Untagged
@@ -244,7 +244,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.79013014, y: 0.13935299, z: 1}
   m_Center: {x: 0.008071971, y: 0.062234614, z: -0.00000007754055}
---- !u!54 &4093488085584733378
+--- !u!54 &9176398337524850818
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

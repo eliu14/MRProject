@@ -169,8 +169,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4803347088550642920}
   - component: {fileID: 1604732825258062775}
-  - component: {fileID: 8009938185051036909}
   - component: {fileID: 4507421465066968650}
+  - component: {fileID: 502206691756804498}
   m_Layer: 0
   m_Name: Bottle2
   m_TagString: Untagged
@@ -228,7 +228,21 @@ LODGroup:
     renderers:
     - renderer: {fileID: 218528697355758846}
   m_Enabled: 1
---- !u!54 &8009938185051036909
+--- !u!136 &4507421465066968650
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173896964647763975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13707855
+  m_Height: 0.582793
+  m_Direction: 1
+  m_Center: {x: -0.0018094778, y: 0.24190998, z: 0}
+--- !u!54 &502206691756804498
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,20 +258,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &4507421465066968650
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2173896964647763975}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.13707855
-  m_Height: 0.582793
-  m_Direction: 1
-  m_Center: {x: -0.0018094778, y: 0.24190998, z: 0}
 --- !u!1 &4072666657848386572
 GameObject:
   m_ObjectHideFlags: 0

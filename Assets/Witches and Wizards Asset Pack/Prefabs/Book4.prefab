@@ -405,8 +405,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1508311434032773587}
   - component: {fileID: 5807470178498677216}
-  - component: {fileID: 8680732258158887893}
   - component: {fileID: 1801721946749460018}
+  - component: {fileID: 8890244788364742506}
   m_Layer: 0
   m_Name: Book4
   m_TagString: Untagged
@@ -468,7 +468,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5350800291323606347}
   m_Enabled: 1
---- !u!54 &8680732258158887893
+--- !u!65 &1801721946749460018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926970556161157915}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.78548044, y: 0.12904523, z: 0.9999999}
+  m_Center: {x: 0.008792242, y: 0.07649575, z: 0}
+--- !u!54 &8890244788364742506
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -484,16 +497,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1801721946749460018
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5926970556161157915}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.78548044, y: 0.12904523, z: 0.9999999}
-  m_Center: {x: 0.008792242, y: 0.07649575, z: 0}
