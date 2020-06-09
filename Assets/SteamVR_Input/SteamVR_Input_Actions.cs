@@ -47,6 +47,8 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_movebck;
         
+        private static SteamVR_Action_Boolean p_default_activatePassage;
+        
         private static SteamVR_Action_Vibration p_default_Haptic;
         
         private static SteamVR_Action_Vector2 p_platformer_Move;
@@ -183,6 +185,14 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Boolean default_activatePassage
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_activatePassage.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
         public static SteamVR_Action_Vibration default_Haptic
         {
             get
@@ -265,6 +275,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_jump,
                     SteamVR_Actions.default_camRot,
                     SteamVR_Actions.default_movebck,
+                    SteamVR_Actions.default_activatePassage,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -289,6 +300,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_jump,
                     SteamVR_Actions.default_camRot,
                     SteamVR_Actions.default_movebck,
+                    SteamVR_Actions.default_activatePassage,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -314,6 +326,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_movefwd,
                     SteamVR_Actions.default_jump,
                     SteamVR_Actions.default_movebck,
+                    SteamVR_Actions.default_activatePassage,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -341,6 +354,7 @@ namespace Valve.VR
                     SteamVR_Actions.default_jump,
                     SteamVR_Actions.default_camRot,
                     SteamVR_Actions.default_movebck,
+                    SteamVR_Actions.default_activatePassage,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -366,6 +380,7 @@ namespace Valve.VR
             SteamVR_Actions.p_default_jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/jump")));
             SteamVR_Actions.p_default_camRot = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/default/in/camRot")));
             SteamVR_Actions.p_default_movebck = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/movebck")));
+            SteamVR_Actions.p_default_activatePassage = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/activatePassage")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));
