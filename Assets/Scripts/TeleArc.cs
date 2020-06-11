@@ -17,12 +17,12 @@ public class TeleArc : MonoBehaviour
     bool btn_pressed = false;
     bool target_locked = false;
     Vector3 target;
-    
+    public bool holding = false;
     // Update is called once per frame
     void Update()
     {
         bool telpressed = teleButton.GetState(handLeft);
-        if(!telpressed && !btn_pressed)
+        if (!telpressed && !btn_pressed)
         {
             lineRenderer.enabled = false;
             return;
@@ -32,8 +32,8 @@ public class TeleArc : MonoBehaviour
             btn_pressed = false;
             if (target_locked)
             {
-                Vector3 targetAbove = new Vector3(target.x, target.y + 0.58f, target.z);
-                Vector3 diff = targetAbove - controller.transform.position;
+                //Vector3 targetAbove = new Vector3(target.x, target.y + 2.58f, target.z);
+                Vector3 diff = target - controller.transform.position;
                 controller.Move(diff);
             }
             target_locked = false;
@@ -57,16 +57,15 @@ public class TeleArc : MonoBehaviour
         lineRenderer.enabled = true;
         // Does the ray interact with any objects excluding player layer
         RaycastHit hit;
-        if(Physics.Raycast(B, new Vector3(0,-1,0), out hit, 10))
+        if (Physics.Raycast(B, new Vector3(0, -1, 0), out hit, 10))
         {
             B.y = B.y - hit.distance;
             target = B;
-            Debug.Log("Controller Height: " + controller.transform.position.y);
-            Debug.Log("Target Height: " + target.y);
-            Debug.Log("Height Diff: " + (target.y - (controller.transform.position.y - .58f)));
-            if (target.y - (controller.transform.position.y - 0.58f) <= 1.0f) target_locked = true;
+            //Debug.Log("Height Diff: " + (target.y - (controller.transform.position.y - 2.58f)));
+            if (target.y - (controller.transform.position.y - 2.58f) <= 2.58f) target_locked = true;
             else target_locked = false;
             //target_locked = true;
+            //Debug.Log("Target: " + target);
         }
         else
         {

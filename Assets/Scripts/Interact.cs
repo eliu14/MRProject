@@ -30,8 +30,8 @@ public class Interact : MonoBehaviour
     }
     void Update()
     {
-        float distance = Vector3.Distance(this.transform.position, player.transform.position);
-        if (grab_action.GetState(right_hand) && distance < 3.0f)
+        float distance = Vector3.Distance(this.transform.position, temp_parent.transform.position);
+        if (grab_action.GetState(right_hand) && distance < 1.0f)
         {
             isHeld = true;
            //rb.useGravity = false;

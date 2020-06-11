@@ -18,16 +18,8 @@ public class ControllerMovePlatforming : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPosRight;
 
     static public Vector3 velocity = new Vector3(0.0f, 0.0f, 0.0f);
-    //float velmag = 0.0f;
-    static public float aoa = 0;
-    static public float angle_x = 0.0f;
-    static public float angle_y = 0.0f;
-    static public float FLmag = 0.0f;
-    static public float FDmag = 0.0f;
+    float velmag = 0.0f;
 
-    static public Vector3 nose = new Vector3(1.0f, 0.0f, 0.0f);
-    static public Vector3 upnose = new Vector3(0.0f, 1.0f, 0.0f);
-    //float thrust = 0.0f;
     public Transform groundCheck;
     public float collisionRadius = 0.5f;
     public LayerMask groundMask;
@@ -37,15 +29,10 @@ public class ControllerMovePlatforming : MonoBehaviour
     bool bwdcheck = false;
     bool jumpcheck = false;
 
-    public float speed = 10.1f;
+    Vector3 last_ground_pos;
+    Transform contact_transform = null;
+    bool contact = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         grounded = Physics.CheckSphere(groundCheck.position, collisionRadius, groundMask);
@@ -56,40 +43,66 @@ public class ControllerMovePlatforming : MonoBehaviour
         Vector3 actual_velocity;
         Vector3 move = new Vector3(0, 0, 0);
         Vector3 FG = new Vector3(0, -9.81f * Time.deltaTime, 0);
-        if (grounded)
+
+        Vector3 jumpImpulse = new Vector3(0.0f, 0.0f, 0.0f);
+        bool fwdPressed = stepFwd.GetState(handLeft);
+        bool bwdPressed = stepBck.GetState(handLeft);
+        bool jumpPressed = jump.GetState(handRight);
+        float w = 0.0f;
+
+        if (fwdPressed == true && fwdcheck == false) w = 2.0f;
+        if (bwdPressed == true && bwdcheck == false) w = -2.0f;
+        if (jumpPressed == true && jumpcheck == false && grounded)
         {
-            
-            Vector3 jumpImpulse = new Vector3(0.0f, 0.0f, 0.0f);
-            bool fwdPressed = stepFwd.GetState(handLeft);
-            bool bwdPressed = stepBck.GetState(handLeft);
-            bool jumpPressed = jump.GetState(handRight);
-            float w = 0.0f;
-
-            //if (fwdPressed == true && fwdcheck == false) w = 2.0f;
-            //if (bwdPressed == true && bwdcheck == false) w = -2.0f;
-            if (jumpPressed == true && jumpcheck == false)
-            {
-                jumpImpulse = (Camera.main.transform.forward * 10) + new Vector3(0, 8, 0);
-            }
-
-            fwdcheck = fwdPressed;
-            bwdcheck = bwdPressed;
-            jumpcheck = jumpPressed;
-
-            Vector2 tracking = new Vector2(0, w);
-            Vector2 camRot = trackRot.GetAxis(handRight);
-            Vector3 euler = new Vector3(0, camRot.x * Time.deltaTime * 70.0f, 0);
-            //Debug.Log(camRot);
-
-            x = tracking.x;
-            z = tracking.y;
-
-            move = Camera.main.transform.right * x + Camera.main.transform.forward * z + jumpImpulse;
-            //move *= speed;
-            this.transform.Rotate(euler);
+            jumpImpulse = (Camera.main.transform.forward * 5) + new Vector3(0, 4, 0);
         }
-        actual_velocity = move + FG;
-        controller.Move(actual_velocity); // pos = pos + move
+
+        fwdcheck = fwdPressed;
+        bwdcheck = bwdPressed;
+        jumpcheck = jumpPressed;
+
+        Vector2 tracking = new Vector2(0, w);
+        Vector2 camRot = trackRot.GetAxis(handRight);
+        Vector3 euler = new Vector3(0, camRot.x * Time.deltaTime * 70.0f, 0);
+        //Debug.Log(camRot);
+
+        x = tracking.x;
+        z = tracking.y;
+        //Collision check for moving platforms
+
+        Vector3 parent_vel = new Vector3(0, 0, 0);
+
+        RaycastHit hitDown;
+        if (Physics.Raycast(controller.transform.position, Vector3.down, out hitDown))
+        {
+            if (hitDown.distance < 2.8f)
+            {
+                if (hitDown.transform != contact_transform)
+                {
+                    contact_transform = hitDown.transform;
+                    contact = false;
+                }
+                //Debug.Log("HitDistance: " + hitDown.distance);
+                if (contact == true)
+                    parent_vel = hitDown.transform.position - last_ground_pos;
+                last_ground_pos = hitDown.transform.position;
+                contact = true;
+
+            }
+            else
+            {
+                contact = false;
+            }
+        }
+        else
+        {
+            contact = false;
+        }
+        move = Camera.main.transform.right * x + Camera.main.transform.forward * z + jumpImpulse;
+
+        this.transform.Rotate(euler);
+        actual_velocity = move + FG + parent_vel;
+        controller.Move(actual_velocity);
     }
 
 }
