@@ -21,8 +21,8 @@ public class OpenCloseHiddenPassage : MonoBehaviour
     void Start()
     {
         current_loc = transform.localPosition;
-        open_vector = new Vector3(-0.001f, 0.0f, 0.0f);
-        close_vector = new Vector3(0.001f, 0.0f, 0.0f);
+        open_vector = new Vector3(-0.01f, 0.0f, 0.0f);
+        close_vector = new Vector3(0.01f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
