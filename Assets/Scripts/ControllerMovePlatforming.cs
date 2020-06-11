@@ -18,7 +18,7 @@ public class ControllerMovePlatforming : MonoBehaviour
     public SteamVR_Behaviour_Pose controllerPosRight;
 
     static public Vector3 velocity = new Vector3(0.0f, 0.0f, 0.0f);
-    float velmag = 0.0f;
+    //float velmag = 0.0f;
     static public float aoa = 0;
     static public float angle_x = 0.0f;
     static public float angle_y = 0.0f;
@@ -27,7 +27,7 @@ public class ControllerMovePlatforming : MonoBehaviour
 
     static public Vector3 nose = new Vector3(1.0f, 0.0f, 0.0f);
     static public Vector3 upnose = new Vector3(0.0f, 1.0f, 0.0f);
-    float thrust = 0.0f;
+    //float thrust = 0.0f;
     public Transform groundCheck;
     public float collisionRadius = 0.5f;
     public LayerMask groundMask;

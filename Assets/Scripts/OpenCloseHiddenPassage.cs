@@ -29,9 +29,9 @@ public class OpenCloseHiddenPassage : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Update isOpen: " + isOpen);
-        Debug.Log("Update isMoving: " + isMoving);
-        Debug.Log("Update Current_Loc_x: " + current_loc.x);
+        //Debug.Log("Update isOpen: " + isOpen);
+        //Debug.Log("Update isMoving: " + isMoving);
+        //Debug.Log("Update Current_Loc_x: " + current_loc.x);
         if (!isOpen && isMoving)
         {
             Debug.Log("Opening..");
