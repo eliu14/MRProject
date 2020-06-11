@@ -13,10 +13,12 @@ public class Interact : MonoBehaviour
 
     public SteamVR_Input_Sources right_hand;
     public SteamVR_Action_Boolean grab_action;
+
+    int gravity_flag = 0;
+
     // Update is called once per frame
     void Update()
     {
-        
         float distance = Vector3.Distance(this.transform.position, player.transform.position);
         if (grab_action.GetState(right_hand) && distance < 3.0f)
         {
@@ -26,6 +28,7 @@ public class Interact : MonoBehaviour
         }
         else
         {
+            //check room gravity 
             this.GetComponent<Rigidbody>().useGravity = true;
             this.GetComponent<Rigidbody>().detectCollisions = true;
             isHeld = false;
