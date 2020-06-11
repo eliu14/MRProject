@@ -19,30 +19,36 @@ public class Interact : MonoBehaviour
     // 1 - left or -X
     // 2 - Up or Y
     public int gravity_flag = 0;
-
+    public bool usingDefaultGrav;
     // Update is called once per frame
 
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         cf = this.GetComponent<ConstantForce>();
-        rb.useGravity = false;
+        
     }
     void Update()
     {
         float distance = Vector3.Distance(this.transform.position, temp_parent.transform.position);
-        if (grab_action.GetState(right_hand) && distance < 1.0f)
+
+        if (usingDefaultGrav)
+            rb.useGravity = true;
+        else
+            rb.useGravity = false;
+
+        if (grab_action.GetState(right_hand) && distance < 0.5f)
         {
             isHeld = true;
-           //rb.useGravity = false;
+            usingDefaultGrav = false;
             cf.force = Vector3.zero;
-           rb.detectCollisions = false;
+            rb.detectCollisions = false;
         }
         else
         {
             //check room gravity 
-            //rb.useGravity = true;
-            checkGrav();
+            if (!usingDefaultGrav)
+                checkGrav();
             rb.detectCollisions = true;
             isHeld = false;
         }
@@ -60,26 +66,29 @@ public class Interact : MonoBehaviour
         else
         {
             this.transform.SetParent(null);
-            //rb.useGravity = true;
-            checkGrav();
+            if (!usingDefaultGrav)
+                checkGrav();
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("GravDown"))
+        if (!usingDefaultGrav)
         {
-            gravity_flag = 0;
-            checkGrav();
-        }
-        else if (other.gameObject.CompareTag("GravSide"))
-        {
-            gravity_flag = 1;
-            checkGrav();
-        }
-        else if (other.gameObject.CompareTag("GravUp"))
-        {
-            gravity_flag = 2;
-            checkGrav();
+            if (other.gameObject.CompareTag("GravDown"))
+            {
+                gravity_flag = 0;
+                checkGrav();
+            }
+            else if (other.gameObject.CompareTag("GravSide"))
+            {
+                gravity_flag = 1;
+                checkGrav();
+            }
+            else if (other.gameObject.CompareTag("GravUp"))
+            {
+                gravity_flag = 2;
+                checkGrav();
+            }
         }
     }
 
