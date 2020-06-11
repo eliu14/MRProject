@@ -70,6 +70,10 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/doorOpen",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
