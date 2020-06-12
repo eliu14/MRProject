@@ -17,12 +17,16 @@ public class OpenCloseHiddenPassage : MonoBehaviour
     public SteamVR_Input_Sources right_hand;
     public SteamVR_Action_Boolean activate_passage_action;
 
+    public AudioClip audio;
+    AudioSource audio_source;
+
     // Start is called before the first frame update
     void Start()
     {
         current_loc = transform.localPosition;
         open_vector = new Vector3(-0.01f, 0.0f, 0.0f);
         close_vector = new Vector3(0.01f, 0.0f, 0.0f);
+        audio_source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -70,6 +74,10 @@ public class OpenCloseHiddenPassage : MonoBehaviour
             {
                 isMoving = true;
                 isOpen = true;
+            }
+            if (audio != null)
+            {
+                audio_source.PlayOneShot(audio, 0.5f);
             }
         }
     }

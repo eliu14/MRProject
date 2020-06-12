@@ -10,10 +10,13 @@ public class doorPivotRight : MonoBehaviour
     public SteamVR_Input_Sources left_hand;
     public SteamVR_Action_Boolean open_door_action;
 
+    public AudioClip audio;
+    AudioSource audio_source;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        audio_source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,10 @@ public class doorPivotRight : MonoBehaviour
         {
             if (angley <= 0.00f) move = 1;
             if (angley >= 90.0f) move = -1;
+            if (audio != null)
+            {
+                audio_source.PlayOneShot(audio, 0.5f);
+            }
         }
     }
 
