@@ -22,11 +22,14 @@ public class Interact : MonoBehaviour
     public bool usingDefaultGrav;
     // Update is called once per frame
 
+    public AudioClip audio;
+    AudioSource audio_source;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         cf = this.GetComponent<ConstantForce>();
-        
+        audio_source = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -118,5 +121,13 @@ public class Interact : MonoBehaviour
        rb.useGravity = true;
        rb.detectCollisions = true;
         isHeld = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (audio != null)
+        {
+            audio_source.PlayOneShot(audio, 0.1f);
+        }
     }
 }
